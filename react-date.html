@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>React practise - Alert buttons</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+
+	<style>
+	body {
+		font-family: Arial, Sans-serif;
+		margin:0 auto;
+		background-color: #bee6db;
+	}
+
+	div {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		min-width: 300px;
+		width: 90%;
+		text-align: center;
+	}
+
+	#love {
+		color:#444;
+		padding: 20px 25px;
+		background-color: #fff9d4;
+		display: inline-block;
+		transition: 0.2s;
+		float: left;
+		border: 0;
+		width: 45%;
+		min-height: 200px;
+		height: 50vh;
+		font-size: 24pt;
+	}
+
+	h2 {
+		font-size: 21pt;
+		letter-spacing: 1pt;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	span {
+		opacity: 0;
+	}
+
+	@media screen and (max-width: 798px) {
+		button {
+			display: table;
+			width: 100%;
+    		margin-top: 15px;
+		}
+	}
+	</style>
+
+</head>
+<body>
+
+	<div id="love"></div>
+
+<script type="text/babel">
+
+var Date = React.createClass({
+
+	getInitialState: function(){
+		return {checked: false}
+	},
+
+	handleChecked: function() {
+		this.setState({checked: !this.state.checked})
+	},
+
+	render: function() {
+		var msg;
+
+		if(this.state.checked){
+			msg = "Hurray!"
+		} else{
+			msg = "Please?"
+		}
+		return (
+				<div>
+					<h2>Are you going on a date with me?</h2>
+					<input type="checkbox" onChange={this.handleChecked} /> Say yes!
+					<h3>{msg}</h3>
+				</div>
+			);
+	}
+});
+
+
+ReactDOM.render(<Date />, document.getElementById("love"));
+
+
+</script>
+
+</body>
+</html>
